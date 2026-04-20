@@ -1,0 +1,80 @@
+/* ============================================================
+   HYDRALIFE INPUTS v1.0
+   Campos de formulário com estética Aero/Performance.
+============================================================ */
+
+@use "../core/tokens" as *;
+@use "../core/mixins" as *;
+
+/* ------------------------------------------------------------
+   1. Inputs base
+------------------------------------------------------------ */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="number"],
+textarea,
+select,
+.input {
+  @include frosted($glass-opacity-low, $glass-blur-low);
+
+  width: 100%;
+  padding: $space-sm $space-md;
+  font-size: $font-size-base;
+  color: $color-primary;
+
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-md;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  transition: all 0.3s ease;
+  outline: none;
+
+  &:focus {
+    @include aero-glass($glass-opacity-default, $glass-blur-default);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* ------------------------------------------------------------
+   2. Textarea
+------------------------------------------------------------ */
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ------------------------------------------------------------
+   3. Select
+------------------------------------------------------------ */
+
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, $color-primary 50%),
+                    linear-gradient(135deg, $color-primary 50%, transparent 50%);
+  background-position: calc(100% - 15px) calc(50% - 3px),
+                       calc(100% - 10px) calc(50% - 3px);
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* ------------------------------------------------------------
+   4. Modo Performance (low-memory)
+------------------------------------------------------------ */
+
+.low-memory {
+  input,
+  textarea,
+  select {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: none !important;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================================================
+   Fim do Hydra Inputs
+============================================================ */

@@ -1,0 +1,38 @@
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+@use "core/tokens" as *;
+@use "core/functions" as *;
+@use "core/mixins" as *;
+@use "core/themes" as *;
+
+/* ------------------------------------------------------------
+   ROUTINES (healing layer)
+   ------------------------------------------------------------ */
+@use "routines/heal";
+
+/* ------------------------------------------------------------
+   BASE (reset, tipografia, globals)
+   ------------------------------------------------------------ */
+@use "base/reset";
+@use "base/typography";
+@use "base/globals";
+
+/* ------------------------------------------------------------
+   LAYOUT (grid, estrutura)
+   ------------------------------------------------------------ */
+@use "layout/grid";
+@use "layout/structure";
+
+/* ------------------------------------------------------------
+   COMPONENTES (botões, badges, painéis, monitores, inputs)
+   ------------------------------------------------------------ */
+@use "components/buttons";
+@use "components/badges";
+@use "components/panels";
+@use "components/monitor";
+@use "components/inputs";

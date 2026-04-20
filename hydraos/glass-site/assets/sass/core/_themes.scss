@@ -1,0 +1,78 @@
+/* ============================================================
+   HYDRALIFE THEMES v1.0
+   Sistema de temas dinâmicos: Aero / Performance.
+   Integração com WebView2 e estados do sistema.
+============================================================ */
+@import "sass:map";
+
+@use "tokens" as *;
+@use "functions" as *;
+
+/* ------------------------------------------------------------
+   1. Presets de Tema (Aero / Performance)
+------------------------------------------------------------ */
+$theme-aero: (
+  blur: $glass-blur-default,
+  opacity: $glass-opacity-default,
+  shadow: $glass-shadow-strong
+);
+
+$theme-performance: (
+  blur: $glass-blur-low,
+  opacity: $glass-opacity-low,
+  shadow: $glass-shadow-soft
+);
+
+/* ------------------------------------------------------------
+   2. Variáveis CSS — expostas globalmente
+------------------------------------------------------------ */
+:root {
+  --font-primary: #{$font-primary};
+  --font-secondary: #{$font-secondary};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --radius-md: #{$radius-md};
+
+  /* Vidro (default = Aero) */
+  --glass-blur: #{$glass-blur-default};
+  --glass-opacity: #{$glass-opacity-default};
+  --glass-shadow: #{$glass-shadow-strong};
+}
+
+/* ------------------------------------------------------------
+   3. Tema Aero (modo visual completo)
+------------------------------------------------------------ */
+.theme-aero,
+.virtual-desktop:not(.low-memory) {
+  --glass-blur: #{map.get($theme-aero, blur)};
+  --glass-opacity: #{map.get($theme-aero, opacity)};
+  --glass-shadow: #{map.get($theme-aero, shadow)};
+}
+
+/* ------------------------------------------------------------
+   4. Tema Performance (modo leve)
+------------------------------------------------------------ */
+.theme-performance,
+.low-memory {
+  --glass-blur: #{map.get($theme-performance, blur)};
+  --glass-opacity: #{map.get($theme-performance, opacity)};
+  --glass-shadow: #{map.get($theme-performance, shadow)};
+}
+
+/* ------------------------------------------------------------
+   5. Helper Mixins — aplicar tema via CSS vars
+------------------------------------------------------------ */
+@mixin theme-glass {
+  background: rgba(255, 255, 255, var(--glass-opacity));
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
+}
+
+/* ------------------------------------------------------------
+   6. Fallback para browsers antigos
+------------------------------------------------------------ */
+.no-backdrop-filter & {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}

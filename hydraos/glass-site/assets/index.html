@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydraLife - Glass Desktop</title>
+    <!-- O Gulp move isto para dist/css/main.css, mas o BrowserSync serve da raiz da dist -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <!-- Filtro SVG para efeitos avançados -->
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0">
+      <filter id="glass-filter">
+        <feComponentTransfer>
+          <feFuncA type="table" tableValues="0 0.5 1" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+
+    <div id="glass-container">
+        <!-- 1. Badge de Estado (Canto Superior Direito via CSS) -->
+        <div id="performance-badge" title="Estado do Sistema">
+            <span class="status-dot"></span>
+            <span class="status-text">Sistema Optimizado</span>
+        </div>
+
+        <!-- 2. Monitor de Recursos (Canto Superior Esquerdo ou Topo) -->
+        <div class="cpu-monitor">
+            <div class="label">
+                <span>Uso de CPU</span>
+                <span id="cpu-value">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="cpu-bar" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- 3. Conteúdo Central -->
+        <div class="main-content">
+            <h1 class="text-glass">Bem-vindo ao Desktop Dinâmico</h1>
+            <button class="button">Efeitos: ON (Aero Glass)</button>
+        </div>
+    </div>
+
+    <!-- O JS deve ser o último a carregar -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+

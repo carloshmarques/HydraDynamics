@@ -1,0 +1,35 @@
+@use "../core/tokens" as *;
+@use "../core/mixins" as *;
+
+/* ============================================================
+   Hydra Inputs (2026)
+   Campos de formulário com estética Aero/Performance.
+============================================================ */
+
+.input,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+  @include frosted($glass-opacity-low, $glass-blur-low);
+  width: 100%;
+  padding: $space-sm $space-md;
+  font-size: $font-size-base;
+  color: $color-primary;
+  border-radius: $radius-md;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+
+  &:focus {
+    @include aero-glass($glass-opacity-default, $glass-blur-default);
+    outline: none;
+  }
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+

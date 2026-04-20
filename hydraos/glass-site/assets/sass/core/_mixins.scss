@@ -1,0 +1,96 @@
+/* ============================================================
+   HYDRALIFE MIXINS v1.0
+   Mixins para vidro, sombras, cartões, flex e responsividade.
+============================================================ */
+
+@use "tokens" as *;
+@use "functions" as *;
+
+
+/* ------------------------------------------------------------
+   1. Aero Glass — efeito vidro premium
+------------------------------------------------------------ */
+@mixin aero-glass(
+  $opacity: $glass-opacity-default,
+  $blur: $glass-blur-default,
+  $radius: $radius-md
+) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur) saturate(150%);
+  -webkit-backdrop-filter: blur($blur) saturate(150%);
+
+  border: 1px solid $glass-border-color;
+  box-shadow: $glass-shadow-strong;
+  border-radius: $radius;
+  transition: all 0.3s ease;
+}
+
+
+/* ------------------------------------------------------------
+   2. Frosted Glass — versão leve (modo performance)
+------------------------------------------------------------ */
+@mixin frosted(
+  $opacity: $glass-opacity-low,
+  $blur: $glass-blur-low,
+  $radius: $radius-sm
+) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+
+  border-radius: $radius;
+  box-shadow: $glass-shadow-soft;
+}
+
+
+/* ------------------------------------------------------------
+   3. Card — container com sombra e borda suave
+------------------------------------------------------------ */
+@mixin card($padding: $space-md) {
+  padding: $padding;
+  border-radius: $radius-md;
+  box-shadow: $glass-shadow-soft;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ------------------------------------------------------------
+   4. Flex Center — alinhamento universal
+------------------------------------------------------------ */
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* ------------------------------------------------------------
+   5. Responsive — breakpoints HydraLife
+------------------------------------------------------------ */
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 480px) { @content; }
+  }
+  @else if $breakpoint == md {
+    @media (max-width: 768px) { @content; }
+  }
+  @else if $breakpoint == lg {
+    @media (max-width: 1024px) { @content; }
+  }
+  @else if $breakpoint == xl {
+    @media (max-width: 1440px) { @content; }
+  }
+}
+
+
+/* ------------------------------------------------------------
+   6. Text Glow — efeito neon suave
+------------------------------------------------------------ */
+@mixin text-glow($color: $color-primary) {
+  text-shadow: 0 0 10px $color;
+}
+
+
+/* ============================================================
+   Fim dos Hydra Mixins
+============================================================ */

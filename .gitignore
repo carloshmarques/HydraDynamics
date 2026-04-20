@@ -1,0 +1,56 @@
+###############################
+# HydraDynamics .gitignore
+# Minimal, intentional, ceremonial
+###############################
+
+# Build artefacts
+bin/
+obj/
+out/
+build/
+dist/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE / Editor
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+#compiled dependencies
+# Node / NPM
+node_modules/
+npm-debug.log
+yarn-error.log
+
+
+# WebView2 cache
+webview2/
+wv2cache/
+
+# Generated files
+*.exe
+*.dll
+*.pdb
+
+# OS metadata
+.DS_Store
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+/* End of .gitignore */

@@ -1,0 +1,63 @@
+/* ============================================================
+   HYDRALIFE FUNCTIONS v1.0
+   Funções utilitárias para vidro, sombras, espaçamentos e
+   cálculos tipográficos.
+============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. Opacidade adaptativa
+   ------------------------------------------------------------ */
+/* Converte um valor numérico em rgba branco com opacidade */
+@function opacity($value) {
+  @return rgba(255, 255, 255, $value);
+}
+
+
+/* ------------------------------------------------------------
+   2. Sombra dinâmica
+   ------------------------------------------------------------ */
+/* Aumenta ou reduz a intensidade da sombra */
+@function shadow($strength: 1) {
+  @return 0 4px (20px * $strength) rgba(0, 0, 0, 0.25);
+}
+
+
+/* ------------------------------------------------------------
+   3. Blur adaptativo
+   ------------------------------------------------------------ */
+/* Aplica blur + saturação (efeito vidro) */
+@function blur($value) {
+  @return blur($value) saturate(150%);
+}
+
+
+/* ------------------------------------------------------------
+   4. Espaçamento multiplicado
+   ------------------------------------------------------------ */
+/* Multiplica o espaçamento base ($space-md) */
+@function space($multiplier) {
+  @return $space-md * $multiplier;
+}
+
+
+/* ------------------------------------------------------------
+   5. Tamanho fluido (opcional mas útil)
+   ------------------------------------------------------------ */
+/* Cria tamanhos responsivos entre dois valores */
+@function fluid-size($min, $max) {
+  @return clamp(#{$min}, 2vw, #{$max});
+}
+
+
+/* ------------------------------------------------------------
+   6. Converter px → rem (qualidade de vida)
+   ------------------------------------------------------------ */
+@function rem($px) {
+  @return calc(#{$px} / 16) * 1rem;
+}
+
+
+/* ============================================================
+   Fim do Hydra Functions
+============================================================ */

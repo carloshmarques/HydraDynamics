@@ -1,0 +1,35 @@
+@use "../core/tokens" as *;
+@use "../core/mixins" as *;
+
+.text-glass {
+  @include aero-glass($glass-opacity-default, $glass-blur-default);
+  position: relative;
+  color: #fff;
+  padding: $space-md;
+  font-size: $font-size-large;
+  border-radius: $radius-md;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, $glass-opacity-default + 0.1);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, $glass-opacity-default);
+    border-radius: $radius-md;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+.text-box {
+  @include aero-glass($glass-opacity-default, $glass-blur-default);
+  color: #fff;
+  padding: $space-md;
+  font-size: $font-size-large;
+  border-radius: $radius-md;
+  position: relative;
+}

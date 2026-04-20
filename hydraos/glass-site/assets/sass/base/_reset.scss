@@ -1,0 +1,74 @@
+/* ============================================================
+   _reset.scss — Hydra Reset (2026)
+   Remove apenas o essencial.
+   Trabalha em conjunto com heal.scss e normalize.css.
+============================================================ */
+
+/* 1. Remove margens padrão dos elementos mais problemáticos */
+body, h1, h2, h3, h4, h5, h6, p, figure {
+  margin: 0;
+}
+
+/* 2. Remove padding inesperado */
+ul, ol {
+  padding: 0;
+}
+
+/* 3. Remove bullets padrão */
+ul, ol {
+  list-style: none;
+}
+
+/* 4. Botões sem estilos nativos inconsistentes */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* 5. Inputs e botões herdam tipografia */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 6. Remove bordas e outlines agressivos */
+input, textarea, select {
+  border: none;
+  outline: none;
+}
+
+/* 7. Imagens sem bordas antigas */
+img {
+  border-style: none;
+}
+
+/* 8. Anchors sem decoração */
+a {
+  text-decoration: none;
+}
+
+/* 9. strong e em consistentes */
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+
+/* 10. Remove espaçamento estranho entre inline-blocks */
+:where(*) {
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* 11. Tabelas sem bordas e espaçamentos inesperados */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ============================================================
+   Fim do Hydra Reset
+============================================================ */

@@ -1,0 +1,63 @@
+/* ============================================================
+   HYDRALIFE DESIGN TOKENS v1.0
+   Variáveis base do framework.
+============================================================ */
+
+/* 🎨 CORES BASE */
+$color-primary: #ff0000;
+$color-secondary: #00ff00;
+$color-background: #f0f0f0;
+
+/* Cores de vidro / UI */
+$color-glass-light: rgba(255, 255, 255, 0.4);
+$color-glass-dark: rgba(0, 0, 0, 0.25);
+$color-shadow: rgba(0, 0, 0, 0.35);
+
+/* ✍️ TIPOGRAFIA */
+$font-primary: 'Arial, sans-serif';
+$font-secondary: 'Helvetica, sans-serif';
+
+/* Tamanhos */
+$font-size-small: 0.875rem;
+$font-size-base: 1rem;
+$font-size-large: 1.25rem;
+$font-size-title: 2rem;
+
+/* Derivados */
+$font-size-h1: calc($font-size-title * 1.2);
+$font-size-h2: calc($font-size-title * 1.0);
+$font-size-h3: calc($font-size-large * 1.1);
+
+/* 📏 ESPAÇAMENTOS */
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+
+/* Derivados */
+$space-section: $space-xl;
+$space-card: $space-lg;
+$space-element: $space-md;
+
+/* 🧊 VIDRO */
+$opacity-default: 0.5;
+
+$glass-opacity-default: 0.85;
+$glass-blur-default: 20px;
+
+$glass-opacity-low: 0.6;
+$glass-blur-low: 0px;
+
+/* Derivados */
+$glass-border-color: rgba(255, 255, 255, 0.2);
+$glass-shadow-strong: 0 4px 20px rgba(0, 0, 0, 0.25);
+$glass-shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.15);
+
+/* 🟦 BORDAS */
+$border-radius: 12px;
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+
+$bullets: 10px;

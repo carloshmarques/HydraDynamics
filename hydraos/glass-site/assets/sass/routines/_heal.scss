@@ -1,0 +1,103 @@
+/* ============================================================
+   heal.scss — Hydra Healing Layer (2026)
+   ------------------------------------------------------------
+   Este módulo atua como um "soro corretivo" para o layout.
+   Corrige malfunctions comuns antes de o design entrar em cena.
+   Modular, opcional e expansível.
+============================================================ */
+
+/* ------------------------------------------------------------
+   1. Configurações (ativar/desativar tratamentos)
+------------------------------------------------------------ */
+$heal-box-model: true !default;          // Corrige explosões de layout
+$heal-media-shift: true !default;        // Evita CLS em imagens/vídeos
+$heal-typography: true !default;         // Estabiliza line-height e rendering
+$heal-forms: true !default;              // Uniformiza inputs e botões
+$heal-lists: true !default;              // Remove bullets inconsistentes
+$heal-tables: true !default;             // Corrige colapso de tabelas
+$heal-interaction: true !default;        // Remove estilos agressivos de anchors
+
+/* ------------------------------------------------------------
+   2. Box Model Healing
+------------------------------------------------------------ */
+@if $heal-box-model {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+}
+
+/* ------------------------------------------------------------
+   3. Media Healing (imagens, vídeos, canvas, svg)
+------------------------------------------------------------ */
+@if $heal-media-shift {
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    content-visibility: auto; // performance + evita layout shift
+  }
+}
+
+/* ------------------------------------------------------------
+   4. Typography Healing
+------------------------------------------------------------ */
+@if $heal-typography {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+  }
+}
+
+/* ------------------------------------------------------------
+   5. Forms Healing
+------------------------------------------------------------ */
+@if $heal-forms {
+  button, input, select, textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+/* ------------------------------------------------------------
+   6. Lists Healing
+------------------------------------------------------------ */
+@if $heal-lists {
+  ul, ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   7. Tables Healing
+------------------------------------------------------------ */
+@if $heal-tables {
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+}
+
+/* ------------------------------------------------------------
+   8. Interaction Healing (anchors)
+------------------------------------------------------------ */
+@if $heal-interaction {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+/* ============================================================
+   Fim do Hydra Healing Layer/Correção de Layout
+============================================================ */
+
+  

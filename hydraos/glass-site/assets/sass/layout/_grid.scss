@@ -1,0 +1,94 @@
+/* ============================================================
+   HYDRALIFE GRID v1.0
+   Sistema de colunas fluido, responsivo e modular.
+============================================================ */
+
+@use "../core/tokens" as *;
+@use "../core/mixins" as *;
+
+/* ------------------------------------------------------------
+   1. Container
+------------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $space-md;
+}
+
+/* ------------------------------------------------------------
+   2. Row
+------------------------------------------------------------ */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-md;
+}
+
+/* ------------------------------------------------------------
+   3. Colunas (1–12)
+------------------------------------------------------------ */
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 calc((100% / 12) * #{$i} - #{$space-md});
+    max-width: calc((100% / 12) * #{$i} - #{$space-md});
+  }
+}
+
+/* ------------------------------------------------------------
+   4. Breakpoints HydraLife
+------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      flex: 0 0 calc((100% / 12) * #{$i} - #{$space-md});
+      max-width: calc((100% / 12) * #{$i} - #{$space-md});
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      flex: 0 0 calc((100% / 12) * #{$i} - #{$space-md});
+      max-width: calc((100% / 12) * #{$i} - #{$space-md});
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      flex: 0 0 calc((100% / 12) * #{$i} - #{$space-md});
+      max-width: calc((100% / 12) * #{$i} - #{$space-md});
+    }
+  }
+}
+
+/* ------------------------------------------------------------
+   5. Utilitários de alinhamento
+------------------------------------------------------------ */
+
+.row-center {
+  justify-content: center;
+}
+
+.row-between {
+  justify-content: space-between;
+}
+
+.row-around {
+  justify-content: space-around;
+}
+
+.row-evenly {
+  justify-content: space-evenly;
+}
+
+/* ============================================================
+   Fim do Hydra Grid
+============================================================ */
