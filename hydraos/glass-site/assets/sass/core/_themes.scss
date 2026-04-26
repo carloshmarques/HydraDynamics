@@ -3,25 +3,23 @@
    Sistema de temas dinâmicos: Aero / Performance.
    Integração com WebView2 e estados do sistema.
 ============================================================ */
-@import "sass:map";
 
 @use "tokens" as *;
 @use "functions" as *;
 
 /* ------------------------------------------------------------
-   1. Presets de Tema (Aero / Performance)
+   1. Presets de Tema (Aero / Performance) — sem maps
 ------------------------------------------------------------ */
-$theme-aero: (
-  blur: $glass-blur-default,
-  opacity: $glass-opacity-default,
-  shadow: $glass-shadow-strong
-);
 
-$theme-performance: (
-  blur: $glass-blur-low,
-  opacity: $glass-opacity-low,
-  shadow: $glass-shadow-soft
-);
+/* Aero (modo visual completo) */
+$theme-aero-blur: $glass-blur-default;
+$theme-aero-opacity: $glass-opacity-default;
+$theme-aero-shadow: $glass-shadow-strong;
+
+/* Performance (modo leve) */
+$theme-performance-blur: $glass-blur-low;
+$theme-performance-opacity: $glass-opacity-low;
+$theme-performance-shadow: $glass-shadow-soft;
 
 /* ------------------------------------------------------------
    2. Variáveis CSS — expostas globalmente
@@ -34,9 +32,9 @@ $theme-performance: (
   --radius-md: #{$radius-md};
 
   /* Vidro (default = Aero) */
-  --glass-blur: #{$glass-blur-default};
-  --glass-opacity: #{$glass-opacity-default};
-  --glass-shadow: #{$glass-shadow-strong};
+  --glass-blur: #{$theme-aero-blur};
+  --glass-opacity: #{$theme-aero-opacity};
+  --glass-shadow: #{$theme-aero-shadow};
 }
 
 /* ------------------------------------------------------------
@@ -44,9 +42,9 @@ $theme-performance: (
 ------------------------------------------------------------ */
 .theme-aero,
 .virtual-desktop:not(.low-memory) {
-  --glass-blur: #{map.get($theme-aero, blur)};
-  --glass-opacity: #{map.get($theme-aero, opacity)};
-  --glass-shadow: #{map.get($theme-aero, shadow)};
+  --glass-blur: #{$theme-aero-blur};
+  --glass-opacity: #{$theme-aero-opacity};
+  --glass-shadow: #{$theme-aero-shadow};
 }
 
 /* ------------------------------------------------------------
@@ -54,9 +52,9 @@ $theme-performance: (
 ------------------------------------------------------------ */
 .theme-performance,
 .low-memory {
-  --glass-blur: #{map.get($theme-performance, blur)};
-  --glass-opacity: #{map.get($theme-performance, opacity)};
-  --glass-shadow: #{map.get($theme-performance, shadow)};
+  --glass-blur: #{$theme-performance-blur};
+  --glass-opacity: #{$theme-performance-opacity};
+  --glass-shadow: #{$theme-performance-shadow};
 }
 
 /* ------------------------------------------------------------

@@ -1,0 +1,1122 @@
+@charset "UTF-8";
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE DESIGN TOKENS v1.0
+   Variáveis base do framework.
+============================================================ */
+/* 🎨 CORES BASE */
+/* Cores de vidro / UI */
+/* ✍️ TIPOGRAFIA */
+/* Tamanhos */
+/* Derivados */
+/* 📏 ESPAÇAMENTOS */
+/* Derivados */
+/* 🧊 VIDRO */
+/* Derivados */
+/* 🟦 BORDAS */
+/* ============================================================
+   HYDRALIFE FUNCTIONS v1.0
+   Funções utilitárias para vidro, sombras, espaçamentos e
+   cálculos tipográficos.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Opacidade adaptativa
+   ------------------------------------------------------------ */
+/* Converte um valor numérico em rgba branco com opacidade */
+/* ------------------------------------------------------------
+   2. Sombra dinâmica
+   ------------------------------------------------------------ */
+/* Aumenta ou reduz a intensidade da sombra */
+/* ------------------------------------------------------------
+   3. Blur adaptativo
+   ------------------------------------------------------------ */
+/* Aplica blur + saturação (efeito vidro) */
+/* ------------------------------------------------------------
+   4. Espaçamento multiplicado
+   ------------------------------------------------------------ */
+/* Multiplica o espaçamento base ($space-md) */
+/* ------------------------------------------------------------
+   5. Tamanho fluido (opcional mas útil)
+   ------------------------------------------------------------ */
+/* Cria tamanhos responsivos entre dois valores */
+/* ------------------------------------------------------------
+   6. Converter px → rem (qualidade de vida)
+   ------------------------------------------------------------ */
+/* ============================================================
+   Fim do Hydra Functions
+============================================================ */
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE MIXINS v1.0
+   Mixins para vidro, sombras, cartões, flex e responsividade.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Aero Glass — efeito vidro premium
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   2. Frosted Glass — versão leve (modo performance)
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   3. Card — container com sombra e borda suave
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   4. Flex Center — alinhamento universal
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   5. Responsive — breakpoints HydraLife
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   6. Text Glow — efeito neon suave
+------------------------------------------------------------ */
+/* ============================================================
+   Fim dos Hydra Mixins
+============================================================ */
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE THEMES v1.0
+   Sistema de temas dinâmicos: Aero / Performance.
+   Integração com WebView2 e estados do sistema.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Presets de Tema (Aero / Performance) — sem maps
+------------------------------------------------------------ */
+/* Aero (modo visual completo) */
+/* Performance (modo leve) */
+/* ------------------------------------------------------------
+   2. Variáveis CSS — expostas globalmente
+------------------------------------------------------------ */
+:root {
+  --font-primary: Arial, sans-serif;
+  --font-secondary: Helvetica, sans-serif;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --radius-md: 12px;
+  /* Vidro (default = Aero) */
+  --glass-blur: 20px;
+  --glass-opacity: 0.85;
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ------------------------------------------------------------
+   3. Tema Aero (modo visual completo)
+------------------------------------------------------------ */
+.theme-aero,
+.virtual-desktop:not(.low-memory) {
+  --glass-blur: 20px;
+  --glass-opacity: 0.85;
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ------------------------------------------------------------
+   4. Tema Performance (modo leve)
+------------------------------------------------------------ */
+.theme-performance,
+.low-memory {
+  --glass-blur: 0px;
+  --glass-opacity: 0.6;
+  --glass-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------------------------------------------------
+   5. Helper Mixins — aplicar tema via CSS vars
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   6. Fallback para browsers antigos
+------------------------------------------------------------ */
+.no-backdrop-filter & {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* ------------------------------------------------------------
+   ROUTINES (healing layer)
+   ------------------------------------------------------------ */
+/* ============================================================
+   heal.scss — Hydra Healing Layer (2026)
+   ------------------------------------------------------------
+   Este módulo atua como um "soro corretivo" para o layout.
+   Corrige malfunctions comuns antes de o design entrar em cena.
+   Modular, opcional e expansível.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Configurações (ativar/desativar tratamentos)
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   2. Box Model Healing
+------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------
+   3. Media Healing (imagens, vídeos, canvas, svg)
+------------------------------------------------------------ */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  content-visibility: auto;
+}
+
+/* ------------------------------------------------------------
+   4. Typography Healing
+------------------------------------------------------------ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   5. Forms Healing
+------------------------------------------------------------ */
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ------------------------------------------------------------
+   6. Lists Healing
+------------------------------------------------------------ */
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ------------------------------------------------------------
+   7. Tables Healing
+------------------------------------------------------------ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ------------------------------------------------------------
+   8. Interaction Healing (anchors)
+------------------------------------------------------------ */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   Fim do Hydra Healing Layer/Correção de Layout
+============================================================ */
+/* ------------------------------------------------------------
+   BASE (reset, tipografia, globals)
+   ------------------------------------------------------------ */
+/* ============================================================
+   _reset.scss — Hydra Reset (2026)
+   Remove apenas o essencial.
+   Trabalha em conjunto com heal.scss e normalize.css.
+============================================================ */
+/* 1. Remove margens padrão dos elementos mais problemáticos */
+body, h1, h2, h3, h4, h5, h6, p, figure {
+  margin: 0;
+}
+
+/* 2. Remove padding inesperado */
+ul, ol {
+  padding: 0;
+}
+
+/* 3. Remove bullets padrão */
+ul, ol {
+  list-style: none;
+}
+
+/* 4. Botões sem estilos nativos inconsistentes */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* 5. Inputs e botões herdam tipografia */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 6. Remove bordas e outlines agressivos */
+input, textarea, select {
+  border: none;
+  outline: none;
+}
+
+/* 7. Imagens sem bordas antigas */
+img {
+  border-style: none;
+}
+
+/* 8. Anchors sem decoração */
+a {
+  text-decoration: none;
+}
+
+/* 9. strong e em consistentes */
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* 10. Remove espaçamento estranho entre inline-blocks */
+:where(*) {
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* 11. Tabelas sem bordas e espaçamentos inesperados */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ============================================================
+   Fim do Hydra Reset
+============================================================ */
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE TYPOGRAPHY v1.0
+   Hierarquia tipográfica consistente, fluida e elegante.
+   Baseado nos tokens definidos em core/_tokens.scss.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Fonte base
+------------------------------------------------------------ */
+body {
+  font-family: "Arial, sans-serif";
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------------------------------------
+   2. Títulos (H1–H6)
+------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica, sans-serif";
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  color: #ff0000;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.875rem;
+}
+
+/* ------------------------------------------------------------
+   3. Parágrafos
+------------------------------------------------------------ */
+p {
+  margin: 0 0 16px 0;
+  font-size: 1rem;
+  color: #00ff00;
+}
+
+/* ------------------------------------------------------------
+   4. Links
+------------------------------------------------------------ */
+a {
+  color: #ff0000;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* ------------------------------------------------------------
+   5. Texto utilitário
+------------------------------------------------------------ */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-muted {
+  opacity: 0.6;
+}
+
+.text-small {
+  font-size: 0.875rem;
+}
+
+/* ============================================================
+   Fim do Hydra Typography
+============================================================ */
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   Hydra Inputs (2026)
+   Campos de formulário com estética Aero/Performance.
+============================================================ */
+.input,
+input[type=text],
+input[type=password],
+input[type=email],
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 1rem;
+  color: #ff0000;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+}
+.input:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+textarea:focus,
+select:focus {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ------------------------------------------------------------
+   LAYOUT (grid, estrutura)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE GRID v1.1 (No-Loop Edition)
+   Sistema de colunas fluido, responsivo e modular.
+   Sem loops — compatível com Gulp/SASS antigos.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Container
+------------------------------------------------------------ */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ------------------------------------------------------------
+   2. Row
+------------------------------------------------------------ */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ------------------------------------------------------------
+   3. Colunas (1–12) — sem loops
+------------------------------------------------------------ */
+.col-1 {
+  flex: 0 0 calc(8.3333333333% - 16px);
+  max-width: calc(8.3333333333% - 16px);
+}
+
+.col-2 {
+  flex: 0 0 calc(16.6666666667% - 16px);
+  max-width: calc(16.6666666667% - 16px);
+}
+
+.col-3 {
+  flex: 0 0 calc(25% - 16px);
+  max-width: calc(25% - 16px);
+}
+
+.col-4 {
+  flex: 0 0 calc(33.3333333333% - 16px);
+  max-width: calc(33.3333333333% - 16px);
+}
+
+.col-5 {
+  flex: 0 0 calc(41.6666666667% - 16px);
+  max-width: calc(41.6666666667% - 16px);
+}
+
+.col-6 {
+  flex: 0 0 calc(50% - 16px);
+  max-width: calc(50% - 16px);
+}
+
+.col-7 {
+  flex: 0 0 calc(58.3333333333% - 16px);
+  max-width: calc(58.3333333333% - 16px);
+}
+
+.col-8 {
+  flex: 0 0 calc(66.6666666667% - 16px);
+  max-width: calc(66.6666666667% - 16px);
+}
+
+.col-9 {
+  flex: 0 0 calc(75% - 16px);
+  max-width: calc(75% - 16px);
+}
+
+.col-10 {
+  flex: 0 0 calc(83.3333333333% - 16px);
+  max-width: calc(83.3333333333% - 16px);
+}
+
+.col-11 {
+  flex: 0 0 calc(91.6666666667% - 16px);
+  max-width: calc(91.6666666667% - 16px);
+}
+
+.col-12 {
+  flex: 0 0 calc(100% - 16px);
+  max-width: calc(100% - 16px);
+}
+
+/* ------------------------------------------------------------
+   4. Breakpoints HydraLife — sem loops
+------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .col-lg-1 {
+    flex: 0 0 calc(8.3333333333% - 16px);
+    max-width: calc(8.3333333333% - 16px);
+  }
+  .col-lg-2 {
+    flex: 0 0 calc(16.6666666667% - 16px);
+    max-width: calc(16.6666666667% - 16px);
+  }
+  .col-lg-3 {
+    flex: 0 0 calc(25% - 16px);
+    max-width: calc(25% - 16px);
+  }
+  .col-lg-4 {
+    flex: 0 0 calc(33.3333333333% - 16px);
+    max-width: calc(33.3333333333% - 16px);
+  }
+  .col-lg-5 {
+    flex: 0 0 calc(41.6666666667% - 16px);
+    max-width: calc(41.6666666667% - 16px);
+  }
+  .col-lg-6 {
+    flex: 0 0 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+  }
+  .col-lg-7 {
+    flex: 0 0 calc(58.3333333333% - 16px);
+    max-width: calc(58.3333333333% - 16px);
+  }
+  .col-lg-8 {
+    flex: 0 0 calc(66.6666666667% - 16px);
+    max-width: calc(66.6666666667% - 16px);
+  }
+  .col-lg-9 {
+    flex: 0 0 calc(75% - 16px);
+    max-width: calc(75% - 16px);
+  }
+  .col-lg-10 {
+    flex: 0 0 calc(83.3333333333% - 16px);
+    max-width: calc(83.3333333333% - 16px);
+  }
+  .col-lg-11 {
+    flex: 0 0 calc(91.6666666667% - 16px);
+    max-width: calc(91.6666666667% - 16px);
+  }
+  .col-lg-12 {
+    flex: 0 0 calc(100% - 16px);
+    max-width: calc(100% - 16px);
+  }
+}
+@media (max-width: 768px) {
+  .col-md-1 {
+    flex: 0 0 calc(8.3333333333% - 16px);
+    max-width: calc(8.3333333333% - 16px);
+  }
+  .col-md-2 {
+    flex: 0 0 calc(16.6666666667% - 16px);
+    max-width: calc(16.6666666667% - 16px);
+  }
+  .col-md-3 {
+    flex: 0 0 calc(25% - 16px);
+    max-width: calc(25% - 16px);
+  }
+  .col-md-4 {
+    flex: 0 0 calc(33.3333333333% - 16px);
+    max-width: calc(33.3333333333% - 16px);
+  }
+  .col-md-5 {
+    flex: 0 0 calc(41.6666666667% - 16px);
+    max-width: calc(41.6666666667% - 16px);
+  }
+  .col-md-6 {
+    flex: 0 0 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+  }
+  .col-md-7 {
+    flex: 0 0 calc(58.3333333333% - 16px);
+    max-width: calc(58.3333333333% - 16px);
+  }
+  .col-md-8 {
+    flex: 0 0 calc(66.6666666667% - 16px);
+    max-width: calc(66.6666666667% - 16px);
+  }
+  .col-md-9 {
+    flex: 0 0 calc(75% - 16px);
+    max-width: calc(75% - 16px);
+  }
+  .col-md-10 {
+    flex: 0 0 calc(83.3333333333% - 16px);
+    max-width: calc(83.3333333333% - 16px);
+  }
+  .col-md-11 {
+    flex: 0 0 calc(91.6666666667% - 16px);
+    max-width: calc(91.6666666667% - 16px);
+  }
+  .col-md-12 {
+    flex: 0 0 calc(100% - 16px);
+    max-width: calc(100% - 16px);
+  }
+}
+@media (max-width: 480px) {
+  .col-sm-1 {
+    flex: 0 0 calc(8.3333333333% - 16px);
+    max-width: calc(8.3333333333% - 16px);
+  }
+  .col-sm-2 {
+    flex: 0 0 calc(16.6666666667% - 16px);
+    max-width: calc(16.6666666667% - 16px);
+  }
+  .col-sm-3 {
+    flex: 0 0 calc(25% - 16px);
+    max-width: calc(25% - 16px);
+  }
+  .col-sm-4 {
+    flex: 0 0 calc(33.3333333333% - 16px);
+    max-width: calc(33.3333333333% - 16px);
+  }
+  .col-sm-5 {
+    flex: 0 0 calc(41.6666666667% - 16px);
+    max-width: calc(41.6666666667% - 16px);
+  }
+  .col-sm-6 {
+    flex: 0 0 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+  }
+  .col-sm-7 {
+    flex: 0 0 calc(58.3333333333% - 16px);
+    max-width: calc(58.3333333333% - 16px);
+  }
+  .col-sm-8 {
+    flex: 0 0 calc(66.6666666667% - 16px);
+    max-width: calc(66.6666666667% - 16px);
+  }
+  .col-sm-9 {
+    flex: 0 0 calc(75% - 16px);
+    max-width: calc(75% - 16px);
+  }
+  .col-sm-10 {
+    flex: 0 0 calc(83.3333333333% - 16px);
+    max-width: calc(83.3333333333% - 16px);
+  }
+  .col-sm-11 {
+    flex: 0 0 calc(91.6666666667% - 16px);
+    max-width: calc(91.6666666667% - 16px);
+  }
+  .col-sm-12 {
+    flex: 0 0 calc(100% - 16px);
+    max-width: calc(100% - 16px);
+  }
+}
+/* ------------------------------------------------------------
+   5. Utilitários de alinhamento
+------------------------------------------------------------ */
+.row-center {
+  justify-content: center;
+}
+
+.row-between {
+  justify-content: space-between;
+}
+
+.row-around {
+  justify-content: space-around;
+}
+
+.row-evenly {
+  justify-content: space-evenly;
+}
+
+/* ============================================================
+   Fim do Hydra Grid v1.1
+============================================================ */
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE STRUCTURE v1.0
+   Estruturas base: body, virtual desktop, containers e triggers.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Corpo do ambiente virtual
+------------------------------------------------------------ */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url("../img/dark-bg.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+}
+
+/* ------------------------------------------------------------
+   2. Container principal (vidro adaptativo)
+------------------------------------------------------------ */
+#glass-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  width: 90vw;
+  height: 80vh;
+  margin: 5vh auto;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  animation: slideUpFade 0.8s ease-out forwards;
+}
+
+/* ------------------------------------------------------------
+   3. Ocultar elementos não usados no ambiente virtual
+------------------------------------------------------------ */
+nav, header, footer {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   4. Hover Tray Trigger (botão flutuante)
+------------------------------------------------------------ */
+.hover-tray-trigger {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  z-index: 9999;
+  background: transparent;
+  border-radius: 12px;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+.hover-tray-trigger::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  pointer-events: none;
+}
+.hover-tray-trigger:hover {
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  animation: pulse 1s infinite;
+}
+
+/* ------------------------------------------------------------
+   5. Animações
+------------------------------------------------------------ */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+}
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ------------------------------------------------------------
+   6. Modo Performance (injetado via JS/C#)
+------------------------------------------------------------ */
+.low-memory .hover-tray-trigger {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.low-memory .hover-tray-trigger::before, .low-memory .hover-tray-trigger::after {
+  display: none;
+}
+.low-memory #glass-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: none !important;
+}
+
+/* ============================================================
+   Fim do Hydra Structure
+============================================================ */
+/* ------------------------------------------------------------
+   COMPONENTES (botões, badges, painéis, monitores, inputs)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+.button {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+#performance-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+}
+#performance-badge .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 10px #00ff88;
+  transition: background 0.4s ease;
+}
+html.low-memory #performance-badge {
+  background: rgba(255, 166, 0, 0.2);
+  border-color: rgba(255, 166, 0, 0.4);
+}
+html.low-memory #performance-badge .status-dot {
+  background: #ffa600;
+  box-shadow: 0 0 10px #ffa600;
+  animation: pulse-dot 2s infinite;
+}
+html.low-memory #performance-badge .status-text::after {
+  content: " (Performance)";
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+.text-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  color: #fff;
+  padding: 16px;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+.text-glass:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+.text-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.text-box {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  color: #fff;
+  padding: 16px;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  position: relative;
+}
+
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+.cpu-monitor {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px) saturate(150%);
+  -webkit-backdrop-filter: blur(5px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  width: 300px;
+}
+.cpu-monitor .label {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.cpu-monitor .progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cpu-monitor .progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00ff88, #00ccff);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  transition: width 0.5s ease-out;
+}
+
+/* ============================================================
+   HYDRALIFE SCSS FRAMEWORK — main.scss
+   ============================================================ */
+/* ------------------------------------------------------------
+   CORE (tokens, funções, mixins, temas)
+   ------------------------------------------------------------ */
+/* ============================================================
+   HYDRALIFE INPUTS v1.0
+   Campos de formulário com estética Aero/Performance.
+============================================================ */
+/* ------------------------------------------------------------
+   1. Inputs base
+------------------------------------------------------------ */
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=search],
+input[type=number],
+textarea,
+select,
+.input {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 1rem;
+  color: #ff0000;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  outline: none;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=search]:focus,
+input[type=number]:focus,
+textarea:focus,
+select:focus,
+.input:focus {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ------------------------------------------------------------
+   2. Textarea
+------------------------------------------------------------ */
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ------------------------------------------------------------
+   3. Select
+------------------------------------------------------------ */
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #ff0000 50%), linear-gradient(135deg, #ff0000 50%, transparent 50%);
+  background-position: calc(100% - 15px) calc(50% - 3px), calc(100% - 10px) calc(50% - 3px);
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* ------------------------------------------------------------
+   4. Modo Performance (low-memory)
+------------------------------------------------------------ */
+.low-memory input,
+.low-memory textarea,
+.low-memory select {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: none !important;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   Fim do Hydra Inputs
+============================================================ */
+/*# sourceMappingURL=main.css.map */

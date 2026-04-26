@@ -27,7 +27,7 @@
    3. Blur adaptativo
    ------------------------------------------------------------ */
 /* Aplica blur + saturação (efeito vidro) */
-@function blur($value) {
+@function glass-blur($value) {
   @return blur($value) saturate(150%);
 }
 
