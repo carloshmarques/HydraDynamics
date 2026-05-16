@@ -1,0 +1,15 @@
+{
+  "name": "Default Theme",
+  "author": "LifeCicles Team",
+  "version": "1.0.0",
+  "description": "The default theme for LifeCicles.",
+  "license": "MIT",
+  "theme": {
+    "primaryColor": "#3498db",
+    "secondaryColor": "#2ecc71",
+    "backgroundColor": "#ecf0f1",
+    "textColor": "#2c3e50",
+    "accentColor": "#e74c3c"
+  }
+}
+
